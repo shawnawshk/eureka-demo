@@ -1,0 +1,16 @@
+apiVersion: networking.istio.io/v1beta1
+kind: ServiceEntry
+metadata:
+  name: user-service
+  namespace: order-ns
+spec:
+  hosts:
+  - user-service
+  location: MESH_INTERNAL
+  ports:
+  - number: 8081
+    name: http
+    protocol: HTTP
+  resolution: DNS
+  endpoints:
+  - address: user-service.user-ns.svc.cluster.local
